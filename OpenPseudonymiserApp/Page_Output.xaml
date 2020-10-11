@@ -1,0 +1,42 @@
+﻿<Page x:Class="OpenPseudonymiser.Page_Output"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="432" d:DesignWidth="520"  ShowsNavigationUI="False" Title="Page_Input">
+
+    <Grid>
+
+        <!-- Page 3 -->
+        <Canvas Name="cvsOutput" Height="324" HorizontalAlignment="Left" Margin="21,90,0,0" VerticalAlignment="Top" Width="511">
+
+            <Label Content="Please select output location..." Height="28" Name="lblSelectedOutput" Width="368" Canvas.Left="0" Canvas.Top="8" />
+            <Button Content="Change Output Folder" Height="23" Name="btnSelectOutput" Width="140" Click="btnSelectOutputFile_Click" Canvas.Left="6" Canvas.Top="30" />
+
+            <!--<Button Content="Save Settings File" Height="23" Name="btnSaveSettings"  Width="140" Click="btnSaveSettings_Click" Canvas.Left="6" Canvas.Top="60" />
+            <Label Height="28" Name="lblSettingsSaved" Width="499" Canvas.Top="80" />-->
+
+            <Label Height="120" Name="lblOutputDetails" Width="499" Canvas.Top="120" />
+            <Label Height="120" FontWeight="Bold" Name="lblStatus" Width="499" Canvas.Top="180" />
+
+            <StackPanel Canvas.Left="10" Canvas.Top="224">
+                <Label x:Name="lblProgress" Visibility="Hidden" Content="0%"/>
+                <ProgressBar x:Name="progress" Visibility="Hidden" Height="25" IsIndeterminate="False" Width="499"></ProgressBar>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="btnCancel" Visibility="Hidden" Click="btnCancel_Click" Width="55">Cancel</Button>
+                </StackPanel>
+                <TextBlock Name="outputLink" Visibility="Hidden">
+                <Hyperlink NavigateUri="" Click="OnUrlClick">Open Output Folder</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+
+
+
+
+        </Canvas>
+
+
+    </Grid>
+</Page>

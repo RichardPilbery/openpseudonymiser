@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a820d4d1-4288-40d9-92f2-5cf924d71352" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://dev.openpseudonymiser.org/services/OpenPServices.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OpenPServices.disco" MetadataType="Disco" ID="a5e5b187-431f-47a9-844f-86195fd164c4" SourceId="1" SourceUrl="http://dev.openpseudonymiser.org/services/OpenPServices.svc?disco" />
+    <MetadataFile FileName="OpenPServices.xsd" MetadataType="Schema" ID="1fdd56ef-f95a-4b33-9de6-7c8827f761be" SourceId="1" SourceUrl="http://dev.openpseudonymiser.org/services/OpenPServices.svc?xsd=xsd0" />
+    <MetadataFile FileName="OpenPServices.wsdl" MetadataType="Wsdl" ID="e8d2d479-b715-41bb-97af-e52b93ebc7a6" SourceId="1" SourceUrl="http://dev.openpseudonymiser.org/services/OpenPServices.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

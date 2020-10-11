@@ -1,0 +1,37 @@
+# Musings and code from RSA dll
+
+# Crypto library
+
+private static string ReadEncryptedMessageUsingPublicKey(byte[] encryptedMessage)
+{
+    RSAEncryption myRsa = new RSAEncryption();
+    myRsa.LoadPublicFromEmbedded(PublicKey);
+
+    byte[] decryptMsg = myRsa.PublicDecryption(encryptedMessage);
+    return Encoding.UTF8.GetString(decryptMsg);   - This decode a range of bytes from a byte array to string
+}
+
+
+# RSA lib
+
+    public void LoadPublicFromEmbedded(string XML)
+    {
+      this.rsa.FromXmlString(XML);
+      RSAParameters rsaParameters = this.rsa.ExportParameters(false);
+      this.Modulus = new BigInteger(rsaParameters.Modulus);
+      this.Exponent = new BigInteger(rsaParameters.Exponent);
+      this.isPublicKeyLoaded = true;
+      this.isPrivateKeyLoaded = false;
+    }
+
+    public byte[] PublicDecryption(byte[] encryptedData)
+    {
+      if (!this.IsPublicKeyLoaded)
+        throw new CryptographicException("Public Key must be loaded before using the Public Deccryption method!");
+      return new BigInteger(encryptedData).modPow(this.Exponent, this.Modulus).getBytes();
+
+    }
+
+ModPow does the modulus maths : Returns the REMAINDER after dividing value^exponent by modulus
+
+
