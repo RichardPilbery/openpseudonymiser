@@ -39,11 +39,11 @@ namespace OpenPseudonymiser.Tests
         {
             bool success = true;
 
-            success = success & RunDateTests();
+            // success = success & RunDateTests();
 
             success = success & RunCryptTests();
 
-            success = success & RunNHSNumberTests();
+            // success = success & RunNHSNumberTests();
 
             Console.WriteLine();
             Console.WriteLine("Overall Test Success: " + success);
@@ -58,7 +58,7 @@ namespace OpenPseudonymiser.Tests
         {
             bool success = true;
             
-            success = success & RunPlainTextSaltCryptoLibTest();
+            // success = success & RunPlainTextSaltCryptoLibTest();
             success = success & RunEncryptedSaltCryptoLibTest();
 
             return success;
@@ -126,7 +126,7 @@ namespace OpenPseudonymiser.Tests
             nameValue.Add("NHSNumber", "9434765919");
 
             // even though we add DOB after we add NHS, it will come before NHSNumber in the input, since the SortedList will always order by alphabetical key
-            nameValue.Add("DOB", "29.11.1973");
+            //nameValue.Add("DOB", "29.11.1973");
 
             // Call the GetDigest method and receive the digest..
             string digest = crypto.GetDigest(nameValue);
