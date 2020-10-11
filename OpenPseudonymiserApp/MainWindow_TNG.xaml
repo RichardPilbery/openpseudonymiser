@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="OpenPseudonymiser" Height="600" Width="572" Background="#FFEBEBEB" ResizeMode="NoResize" Icon="OP Ico.ico">
+        Title="OpenPseudonymiserMulti" Height="600" Width="572" Background="#FFEBEBEB" ResizeMode="NoResize" Icon="OP Ico.ico">
     <Grid>
         <Canvas Height="74" HorizontalAlignment="Left" Name="cvsHeader" VerticalAlignment="Top" Width="584" DataContext="{Binding}" Background="White">
             <Label Canvas.Left="6" Canvas.Top="6" Content="Header message" Height="36.581" Name="lblHeader" Width="526" FontSize="16" FontWeight="Bold" />
