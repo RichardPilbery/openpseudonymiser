@@ -173,7 +173,7 @@ namespace OpenPseudonymiser
                     string[] inputHeadings = streamReader.ReadLine().Split(',');
 
                     // write the first line as the selected column headings
-                    string lineToWrite = "Digest,";
+                    string lineToWrite = "";
                     foreach (int key in outputFields.Keys) // keys in the output are indexes (opposite to input SortedList)
                     {
                         lineToWrite += outputFields[key] + ",";
@@ -218,8 +218,10 @@ namespace OpenPseudonymiser
                         string[] linesArray = workingBuffer.ToString().Split('\n');
 
                         // process all the lines EXCEPT THE LAST ONE in the lines array (the last one is likely to be incomplete)
-                        for (int i = 0; i < (linesArray.Length - 1); i++)
-                        {
+                        //for (int i = 0; i < (linesArray.Length - 1); i++)
+                            // Include last line too as it is likely to containg a row of data
+                            for (int i = 0; i < (linesArray.Length); i++)
+                            {
                             string line = linesArray[i];
                             // the line should have the same number of columns as the ColumnCollection, if not then up the jagged lines count, and skip processing
                             string[] lineColumns = line.Split(',');
@@ -249,7 +251,7 @@ namespace OpenPseudonymiser
                             else
                             {
                                 // get the columns for crypting using the inputFields, since this is a sorted list we always get the indexes from aphabetically ordered keys
-                               // SortedList<string, string> hashNameValueCollection = new SortedList<string, string>();
+                                // SortedList<string, string> hashNameValueCollection = new SortedList<string, string>();
 
                                 // first column is the digest
                                 /**   foreach (string key in inputFields.Keys)
@@ -273,8 +275,7 @@ namespace OpenPseudonymiser
 
                                 // output the rest of the columns in the output list
 
-                                int firstLine = 1;
-
+                                lineToWrite = "";
 
                                 foreach (int key in outputFields.Keys) // keys in the output are indexes (opposite to input SortedList)
                                 {
@@ -295,31 +296,21 @@ namespace OpenPseudonymiser
                                                 // This needs hashing
                                                 flag = 1;
                                                 SortedList<string, string> hashNameValueCollection = new SortedList<string, string>();
-                                                //string theData = lineColumns[outputFields[key]];
-                                                hashNameValueCollection.Add(key2, lineColumns[inputFields[key2]]);
+                                                // Remove any linebreaks from the string
+                                                // Prevents unexpected behaviour then the last variable at the end of the file needs pseudonymising
+                                                string theData = lineColumns[inputFields[key2]];
+                                                theData = Regex.Replace(theData, "[^A-Za-z0-9 -]", "");
+                                                Console.WriteLine("Value to be added to digest: " + theData);
+                                                hashNameValueCollection.Add(key2, theData);
                                                 string digest = crypto.GetDigest(hashNameValueCollection);
-                                                if (firstLine == 1)
-                                                {
-                                                    lineToWrite = digest + ",";
-                                                    firstLine = 0;
-                                                }
-                                                else
-                                                {
-                                                    lineToWrite += digest + ",";
-                                                }
-
+                                                Console.WriteLine("Digest is: " + digest);
+                                                lineToWrite += digest + ",";
                                             }
                                         }
                                         if (flag == 0)
                                         {
-                                            if (firstLine == 1)
-                                            {
-                                                lineToWrite = lineColumns[key] + ",";
-                                            }
-                                            else
-                                            {
-                                                lineToWrite += lineColumns[key] + ",";
-                                            }
+
+                                             lineToWrite += lineColumns[key] + ",";
 
                                         }
                                         flag = 0;
@@ -369,10 +360,12 @@ namespace OpenPseudonymiser
                                 streamWriter.WriteLine(lineToWrite);
                             }
                         }
-                        rowsProcessed += linesArray.Length - 1;
+                        //rowsProcessed += linesArray.Length - 1;
+                        rowsProcessed += linesArray.Length;
 
                         // set the working buffer to be the last line, so the next pass can concatonate
-                        string lastLine = linesArray[linesArray.Length - 1];
+                        string lastLine = linesArray[linesArray.Length];
+                        //string lastLine = linesArray[linesArray.Length - 1];
                         workingBuffer = new StringBuilder(lastLine);
 
                         UpdateProgressDelegate update = new UpdateProgressDelegate(pageOut.UpdateProgressText);

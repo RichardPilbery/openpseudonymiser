@@ -132,7 +132,7 @@ namespace OpenPseudonymiser.Tests
             string digest = crypto.GetDigest(nameValue);
 
             // we expect the following digest for the above values
-            success = (digest == "ED72F814B7905F3D3958749FA90FE657C101EC657402783DB68CBE3513E76087");
+            success = (digest == "643574A0AEFDA8DAC01EEBE45F7E8CFE814B15BBC3F654AC934518A34A53D575");
 
             Console.WriteLine("Test for ( EncryptedSalt  ): " + success);
             crypto = null;
