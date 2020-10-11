@@ -48,7 +48,7 @@ namespace OpenPseudonymiser
         private void ValidatePage()
         {
 
-            BuildNHSComboBox();
+            //BuildNHSComboBox();
 
             int usedForDigest = 0;
             int usedForOutput = 0;
@@ -87,7 +87,7 @@ namespace OpenPseudonymiser
 
         }
 
-        private void BuildNHSComboBox()
+     /**   private void BuildNHSComboBox()
         {            
             cmbNHSNumber.Items.Clear();
 
@@ -115,13 +115,13 @@ namespace OpenPseudonymiser
                 cmbNHSNumber.Items.Add(item);
                 i++;                
             }
-        }
+        } **/
 
-        private void cmbNHSNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
+     /**   private void cmbNHSNumber_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             parent.columnIndexSelectedAsNHSNumber = cmbNHSNumber.SelectedIndex;
             parent.performNHSNumberValidation = cmbNHSNumber.SelectedIndex >0;
             
-        }
+        } **/
     }
 }

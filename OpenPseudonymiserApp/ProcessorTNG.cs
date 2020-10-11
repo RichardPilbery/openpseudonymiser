@@ -249,29 +249,33 @@ namespace OpenPseudonymiser
                             else
                             {
                                 // get the columns for crypting using the inputFields, since this is a sorted list we always get the indexes from aphabetically ordered keys
-                                SortedList<string, string> hashNameValueCollection = new SortedList<string, string>();
+                               // SortedList<string, string> hashNameValueCollection = new SortedList<string, string>();
 
                                 // first column is the digest
-                                foreach (string key in inputFields.Keys)
-                                {
-                                    string theData = lineColumns[inputFields[key]];
+                                /**   foreach (string key in inputFields.Keys)
+                                   {
+                                       string theData = lineColumns[inputFields[key]];
 
-                                    // we always process the one they selected as NHSNumber ..
-                                    if (performNHSNumberValidation)
-                                    {
-                                        string nhskey = inputHeadings[indexOfNHSNumber - 1];
-                                        if (nhskey == key)
-                                        {
-                                            theData = crypto.ProcessNHSNumber(theData);
-                                        }
-                                    }
-                                    hashNameValueCollection.Add(key, theData);
-                                }
-                                string digest = crypto.GetDigest(hashNameValueCollection);
-                                string validNHS = "";
-                                lineToWrite = digest + ",";
+                                       // we always process the one they selected as NHSNumber ..
+                                       if (performNHSNumberValidation)
+                                       {
+                                           string nhskey = inputHeadings[indexOfNHSNumber - 1];
+                                           if (nhskey == key)
+                                           {
+                                               theData = crypto.ProcessNHSNumber(theData);
+                                           }
+                                       }
+                                       hashNameValueCollection.Add(key, theData);
+                                   }
+                                   string digest = crypto.GetDigest(hashNameValueCollection);
+                                   string validNHS = "";
+                                   lineToWrite = digest + ",";  **/
 
                                 // output the rest of the columns in the output list
+
+                                int firstLine = 1;
+
+
                                 foreach (int key in outputFields.Keys) // keys in the output are indexes (opposite to input SortedList)
                                 {
                                     // Look for column heading that is a date..
@@ -281,12 +285,49 @@ namespace OpenPseudonymiser
                                     }
                                     else
                                     {
-                                        lineToWrite += lineColumns[key] + ",";
+                                        int flag = 0;
+                                        foreach (string key2 in inputFields.Keys)
+                                        {
+                                            System.Diagnostics.Debug.WriteLine(key2);
+                                            System.Diagnostics.Debug.WriteLine(outputFields[key]);
+                                            if (key2 == outputFields[key])
+                                            {
+                                                // This needs hashing
+                                                flag = 1;
+                                                SortedList<string, string> hashNameValueCollection = new SortedList<string, string>();
+                                                //string theData = lineColumns[outputFields[key]];
+                                                hashNameValueCollection.Add(key2, lineColumns[inputFields[key2]]);
+                                                string digest = crypto.GetDigest(hashNameValueCollection);
+                                                if (firstLine == 1)
+                                                {
+                                                    lineToWrite = digest + ",";
+                                                    firstLine = 0;
+                                                }
+                                                else
+                                                {
+                                                    lineToWrite += digest + ",";
+                                                }
+
+                                            }
+                                        }
+                                        if (flag == 0)
+                                        {
+                                            if (firstLine == 1)
+                                            {
+                                                lineToWrite = lineColumns[key] + ",";
+                                            }
+                                            else
+                                            {
+                                                lineToWrite += lineColumns[key] + ",";
+                                            }
+
+                                        }
+                                        flag = 0;
                                     }
                                 }
 
                                 // last column is the NHS Validation (if requested)                                
-                                if (performNHSNumberValidation)
+                                /** if (performNHSNumberValidation)
                                 {
                                     // find the NHSNumber in the list of input columns and validate it
                                     string key = inputHeadings[indexOfNHSNumber - 1];
@@ -319,7 +360,7 @@ namespace OpenPseudonymiser
 
                                     }
 
-                                }
+                                } **/
 
                                 // we're done writing the output line now. Strip trailing comma.
                                 lineToWrite = lineToWrite.Substring(0, lineToWrite.Length - 1);

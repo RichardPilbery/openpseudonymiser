@@ -28,13 +28,13 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                            <GridViewColumn Header="Process as Date">
+                        <!--    <GridViewColumn Header="Process as Date">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <CheckBox Click="CheckBox_Click" IsChecked="{Binding ProcessAsDate}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
+                            </GridViewColumn> -->
 
                             <GridViewColumn Width="140" Header="Column Heading" DisplayMemberBinding="{Binding ColumnHeading}" />
                         </GridView>
@@ -42,8 +42,8 @@
                 </ListView>
             </StackPanel>
 
-            <Label Content="NHSNumber field: " Margin="8,482,1,44" Canvas.Top="-402" Canvas.Left="-2" />
-            <ComboBox Canvas.Top="-408" Name="cmbNHSNumber" Width="306" Height="28" Margin="248,487,270,37" Canvas.Left="-136" SelectionChanged="cmbNHSNumber_SelectionChanged"></ComboBox>
+         <!--   <Label Content="NHSNumber field: " Margin="8,482,1,44" Canvas.Top="-402" Canvas.Left="-2" />
+            <ComboBox Canvas.Top="-408" Name="cmbNHSNumber" Width="306" Height="28" Margin="248,487,270,37" Canvas.Left="-136" SelectionChanged="cmbNHSNumber_SelectionChanged"></ComboBox> -->
         </Canvas>
 
     </Grid>
