@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="OpenPseudonymiser.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity name="OpenPseudonymiserMulti.exe" version="1.0.0.6" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <description asmv2:iconFile="OP Ico.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="OpenPseudonymiser" version="2.0.2.0" language="neutral" processorArchitecture="x86" />
-    <commandLine file="OpenPseudonymiser.exe" parameters="" />
+    <assemblyIdentity name="OpenPseudonymiserMulti" version="2.0.2.1" language="neutral" processorArchitecture="x86" />
+    <commandLine file="OpenPseudonymiserMulti.exe" parameters="" />
   </entryPoint>
   <trustInfo>
     <security>
@@ -70,18 +70,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenPseudonymiser.exe" size="159744">
-      <assemblyIdentity name="OpenPseudonymiser" version="2.0.2.0" language="neutral" processorArchitecture="x86" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>9JKxGTgHlJg8zN12XSs4wm4T4nM=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenPseudonymiser_CryptoLib.dll" size="12800">
       <assemblyIdentity name="OpenPseudonymiser_CryptoLib" version="2.0.2.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -89,7 +77,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>kWjF85lH+atotc9+tG/EsgdORC8=</dsig:DigestValue>
+        <dsig:DigestValue>gjnu8e7ZquyMAjZiIFi7e1Wv2GU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenPseudonymiserMulti.exe" size="164864">
+      <assemblyIdentity name="OpenPseudonymiserMulti" version="2.0.2.1" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>5OAOPjJoqDSUTfXen/aTYpqHvXg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -126,7 +126,7 @@
       <dsig:DigestValue>jM/HyyRl4fvne4EYYfbvI+2wiak=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="OpenPseudonymiser.exe.config" size="634">
+  <file name="OpenPseudonymiserMulti.exe.config" size="634">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />

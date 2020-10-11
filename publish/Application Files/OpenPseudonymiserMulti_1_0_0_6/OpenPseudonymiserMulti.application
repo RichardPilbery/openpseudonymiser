@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xrml="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <assemblyIdentity name="OpenPseudonymiser.application" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" xmlns="urn:schemas-microsoft-com:asm.v1" />
-  <description asmv2:publisher="OpenPseudonymiser" asmv2:product="OpenPseudonymiser" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <assemblyIdentity name="OpenPseudonymiserMulti.application" version="1.0.0.6" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="OpenPseudonymiserMulti" asmv2:product="OpenPseudonymiserMulti" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Application Files\OpenPseudonymiser_1_0_0_6\OpenPseudonymiser.exe.manifest" size="8003">
-      <assemblyIdentity name="OpenPseudonymiser.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+    <dependentAssembly dependencyType="install" codebase="Application Files\OpenPseudonymiserMulti_1_0_0_6\OpenPseudonymiserMulti.exe.manifest" size="8033">
+      <assemblyIdentity name="OpenPseudonymiserMulti.exe" version="1.0.0.6" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>z9D2R8CaE0Zr6pEMBlTnhpQwo0E=</dsig:DigestValue>
+        <dsig:DigestValue>j4DEvDS6wFy3HAIpN1s5QryxsVA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
