@@ -200,6 +200,8 @@ namespace OpenPseudonymiser
                     long charsRead = streamReader.Read(readBuffer, 0, _bufferSize);
                     totalCharsRead += charsRead;
 
+                    int masterCounter = 1;
+
                     while (charsRead > 0)
                     {
                         if (worker.CancellationPending)
@@ -218,18 +220,29 @@ namespace OpenPseudonymiser
                         string[] linesArray = workingBuffer.ToString().Split('\n');
 
                         // process all the lines EXCEPT THE LAST ONE in the lines array (the last one is likely to be incomplete)
-                        //for (int i = 0; i < (linesArray.Length - 1); i++)
+                        for (int i = 0; i < (linesArray.Length - 1); i++)
                             // Include last line too as it is likely to containg a row of data
-                            for (int i = 0; i < (linesArray.Length); i++)
+                            //for (int i = 0; i < (linesArray.Length); i++)
                             {
                             string line = linesArray[i];
                             // the line should have the same number of columns as the ColumnCollection, if not then up the jagged lines count, and skip processing
                             string[] lineColumns = line.Split(',');
 
+                            //Console.WriteLine("Currentely processing row " + masterCounter + ", col count is: " + ColumnCollection.Count + " and linecol.length is " + lineColumns.Length);
+                            masterCounter++;
 
+/*                            if(lineColumns.Length < 2)
+                            {
+                                Console.WriteLine("Line lenght issue");
+                            } else
+                            {
+                                Console.WriteLine("Last value of this row is " + lineColumns[12]);
+                            }*/
+                            
                             // if we get a jagged result here (i.e. length of columns does not match the headers) then try a split using quote delimited data
                             if (lineColumns.Length != ColumnCollection.Count)
                             {
+                                //Console.WriteLine("JAgged line issue with row " + (i + 1));
                                 // thanks to http://stackoverflow.com/questions/3776458/split-a-comma-separated-string-with-both-quoted-and-unquoted-strings
                                 // for this bit of regex
                                 Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled);
@@ -246,6 +259,7 @@ namespace OpenPseudonymiser
                             // if we're still jagged then we can't do much other than skip processing this line and increment the jagged counter
                             if (lineColumns.Length != ColumnCollection.Count)
                             {
+                                //Console.WriteLine("Still have jagged line issue");
                                 jaggedLines++;
                             }
                             else
@@ -289,8 +303,8 @@ namespace OpenPseudonymiser
                                         int flag = 0;
                                         foreach (string key2 in inputFields.Keys)
                                         {
-                                            System.Diagnostics.Debug.WriteLine(key2);
-                                            System.Diagnostics.Debug.WriteLine(outputFields[key]);
+                                            //System.Diagnostics.Debug.WriteLine(key2);
+                                            //System.Diagnostics.Debug.WriteLine(outputFields[key]);
                                             if (key2 == outputFields[key])
                                             {
                                                 // This needs hashing
@@ -300,10 +314,10 @@ namespace OpenPseudonymiser
                                                 // Prevents unexpected behaviour then the last variable at the end of the file needs pseudonymising
                                                 string theData = lineColumns[inputFields[key2]];
                                                 theData = Regex.Replace(theData, "[^A-Za-z0-9 -]", "");
-                                                Console.WriteLine("Value to be added to digest: " + theData);
+                                                //Console.WriteLine("Value to be added to digest: " + theData);
                                                 hashNameValueCollection.Add(key2, theData);
                                                 string digest = crypto.GetDigest(hashNameValueCollection);
-                                                Console.WriteLine("Digest is: " + digest);
+                                                //Console.WriteLine("Digest is: " + digest);
                                                 lineToWrite += digest + ",";
                                             }
                                         }
@@ -360,12 +374,12 @@ namespace OpenPseudonymiser
                                 streamWriter.WriteLine(lineToWrite);
                             }
                         }
-                        //rowsProcessed += linesArray.Length - 1;
-                        rowsProcessed += linesArray.Length;
+                        rowsProcessed += linesArray.Length - 1;
+                        //rowsProcessed += linesArray.Length;
 
                         // set the working buffer to be the last line, so the next pass can concatonate
-                        string lastLine = linesArray[linesArray.Length];
-                        //string lastLine = linesArray[linesArray.Length - 1];
+                        //string lastLine = linesArray[linesArray.Length];
+                        string lastLine = linesArray[linesArray.Length - 1];
                         workingBuffer = new StringBuilder(lastLine);
 
                         UpdateProgressDelegate update = new UpdateProgressDelegate(pageOut.UpdateProgressText);
